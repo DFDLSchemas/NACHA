@@ -23,6 +23,14 @@ nacha_file.xsd
 --------------
 A DFDL schema that provides a DFDL-annotated element to model an overall NACHA message (file).
 
+TestData.zip
+------------
+Valid and invalid examples of NACHA files.
+
+TestInfosets.zip
+----------------
+For each valid example of a NACHA file in TestData.zip, the equivalent DFDL infoset rendered as XML. 
+
 ----------------
 
 Please observe the copyright notice within each schema.
