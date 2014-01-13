@@ -34,7 +34,7 @@ nacha_file.xsd
 A DFDL schema that provides a DFDL-annotated element to model a NACHA file. 
 
 ----------------
-NACHA 2013 Operating Rules and Guidelines may be obtained from the NACHA website: www.nacha.org
+NACHA 2013 Operating Rules and Guidelines may be purchased from the NACHA website: www.nacha.org
 
 Please observe the copyright notice within each schema.
 
