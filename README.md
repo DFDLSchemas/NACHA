@@ -20,26 +20,6 @@ Entry Detail records of the following types are currently supported:
 
 The NACHA 2013 schemas are in the '2013' folder.
 
-nacha_format.xsd 
-----------------
-A DFDL schema that contains default values for DFDL properties that are suitable for NACHA data.
-
-nacha_types.xsd
----------------
-A DFDL schema that provides a set of DFDL-annotated types for NACHA data types.
-
-nacha_elements.xsd
-------------------
-A DFDL schema that provides a set of DFDL-annotated elements for NACHA fields.
-
-nacha_records.xsd
------------------
-A DFDL schema that provides a set of DFDL-annotated elements for NACHA records.
-
-nacha_file.xsd
---------------
-A DFDL schema that provides a DFDL-annotated element to model an overall NACHA message (file).
-
 ----------------
 NACHA 2013 Operating Rules and Guidelines may be purchased from the NACHA website: www.nacha.org
 
