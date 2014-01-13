@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+	******************************************************************
+	*
+    * Permission has been granted to IBM by NACHA - The Electronic Payments 
+    * Association to publish the following schema which contains material 
+    * derived from the 2013 NACHA Operating Rules and Guidelines. 
+    *
+    * NACHA and IBM hereby grant permission, to those obtaining a copy of these 
+    * materials to use, copy and modify the materials solely for use in DFDL processors. 
+    * THESE MATERIALS ARE PROVIDED AS IS WITH NO WARRANTIES OF ANY KIND.  
+    * 
+    * © 2014 NACHA - The Electronic Payments Association
+    *
+    * © Copyright International Business Machines Corporation, 2014. 	
+    *
+	******************************************************************
+	*
+	* Version 1.0 	nacha_format.xsd
+	*
+	* This DFDL schema is one of a set of schemas that model ACH files.
+	* It provides a set of default property values for the other schemas in the set. 
+	*
+	******************************************************************
+--><xs:schema targetNamespace="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" >
+	<xs:annotation>
+		<xs:appinfo source="http://www.ogf.org/dfdl/">
+
+			<!-- Default property values -->
+			<dfdl:defineFormat name="NACHAFormat">
+			  <dfdl:format initiator="" terminator="" leadingSkip="0" trailingSkip="0" separator="" 
+			    textBidi="no" floating="no" encoding="US-ASCII" byteOrder="bigEndian" occursCountKind="implicit" 
+			    alignment="1" fillByte="%SP;" alignmentUnits="bytes"
+				truncateSpecifiedLengthString="no" ignoreCase="no" representation="text"
+				textPadKind="padChar" textTrimKind="none" lengthKind="explicit"
+				escapeSchemeRef="" textOutputMinLength="0" lengthUnits="bytes"
+				textStringJustification="left" textStringPadCharacter="%SP;"
+				textCalendarJustification="left" textCalendarPadCharacter="%SP;"
+				nilValueDelimiterPolicy="none" emptyValueDelimiterPolicy="none"
+				documentFinalTerminatorCanBeMissing="yes" initiatedContent="no"
+				sequenceKind="ordered" separatorPolicy="suppressed" 
+				calendarPatternKind="explicit" calendarPattern="yyMMdd"
+				calendarCheckPolicy="lax" calendarTimeZone="UTC"
+				calendarObserveDST="yes" calendarFirstDayOfWeek="Sunday"
+				calendarDaysInFirstWeek="1" calendarCenturyStart="50"
+				calendarLanguage="en-US" textStandardBase="10" textNumberRep="standard"
+				textNumberPattern="##0" textNumberJustification="right"
+				textNumberPadCharacter="0" textStandardGroupingSeparator=","
+				textStandardDecimalSeparator="." textStandardExponentCharacter="e"
+				decimalSigned="yes" textNumberCheckPolicy="strict" textStandardInfinityRep="I"
+				textStandardNaNRep="z" textNumberRounding="pattern"
+				textStandardZeroRep="0" outputNewLine="%CR;%LF;" length="0"
+				nilKind="literalValue" nilValue="%ES;" useNilForDefault="no"/>
+			</dfdl:defineFormat>
+			
+			<!-- ACH record properties, allowing optional line feed -->
+			<dfdl:defineFormat name="NACHARecord">
+			  <dfdl:format lengthKind="explicit" length="94" terminator="%WSP*;"/>
+			</dfdl:defineFormat>
+
+		</xs:appinfo>
+	</xs:annotation>
+
+</xs:schema>

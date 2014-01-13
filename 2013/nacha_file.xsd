@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+	******************************************************************
+	* 
+    * Permission has been granted to IBM by NACHA - The Electronic Payments 
+    * Association to publish the following schema which contains material 
+    * derived from the 2013 NACHA Operating Rules and Guidelines. 
+    *
+    * NACHA and IBM hereby grant permission, to those obtaining a copy of these 
+    * materials to use, copy and modify the materials solely for use in DFDL processors. 
+    * THESE MATERIALS ARE PROVIDED AS IS WITH NO WARRANTIES OF ANY KIND.  
+    * 
+    * © 2014 NACHA - The Electronic Payments Association
+    *
+    * © Copyright International Business Machines Corporation, 2014. 	
+    *
+	******************************************************************
+	*
+	* Version 1.0 	nacha_file.xsd
+	*
+	* This DFDL schema is one of a set of schemas that model ACH files.
+	* It provides a set of DFDL-annotated elements for a standard ACH file
+	* consisting of repeating batches of entry detail records.   
+	* 
+	* The schema allows optional line feeds between records.
+	*
+	* All the entry detail records within a batch must be of the same kind.
+	* The kind is indicated by a field in the batch header record, so
+	* a discriminator is used to resolve the choice.
+	*
+	* Some entry detail records have a single optional addenda record, and some
+	* have multiple optional addenda records. An indicator and count in the entry
+	* detail record indicates if this is the case.
+	*
+	* The supported entry detail records are: CCD, CTX, ACK, ATX
+	*
+	******************************************************************
+--><xs:schema elementFormDefault="qualified" targetNamespace="ach:2013" xmlns="ach:2013" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ref="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+    <xs:include schemaLocation="nacha_records.xsd"/>
+    <xs:import namespace="http://www.ibm.com/dfdl/NACHAFormat" schemaLocation="nacha_format.xsd"/>
+		
+	<xs:annotation>
+		<xs:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="ref:NACHAFormat"/>
+		</xs:appinfo>
+	</xs:annotation>
+	
+
+	<xs:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="ACHFile">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="FileHeaderRecord">
+				</xs:element>
+				<xs:element dfdl:lengthKind="implicit" maxOccurs="unbounded" minOccurs="1" name="Batch">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="BatchHeaderRecord">
+							</xs:element>
+						    <xs:choice dfdl:choiceLengthKind="implicit">
+						        <xs:sequence>
+	                                <xs:annotation>
+				                        <xs:appinfo source="http://www.ogf.org/dfdl/">
+                   						    <dfdl:discriminator>{./BatchHeaderRecord/StandardEntryClassCode eq 'CCD'}</dfdl:discriminator>
+                   						</xs:appinfo>
+               						</xs:annotation>
+									<xs:element maxOccurs="unbounded" minOccurs="1" ref="CCDEntry">
+								 	</xs:element>
+								</xs:sequence> 	
+								<xs:sequence> 	
+                                    <xs:annotation>
+				                        <xs:appinfo source="http://www.ogf.org/dfdl/">
+                     						  <dfdl:discriminator>{./BatchHeaderRecord/StandardEntryClassCode eq 'CTX'}</dfdl:discriminator>
+                   						</xs:appinfo>
+               						</xs:annotation>
+									<xs:element maxOccurs="unbounded" minOccurs="1" ref="CTXEntry">
+								 	</xs:element>
+								</xs:sequence> 	
+								<xs:sequence> 	
+                                    <xs:annotation>
+				                        <xs:appinfo source="http://www.ogf.org/dfdl/">
+                      						  <dfdl:discriminator>{./BatchHeaderRecord/StandardEntryClassCode eq 'ACK'}</dfdl:discriminator>
+                   						</xs:appinfo>
+               						</xs:annotation>
+									<xs:element maxOccurs="unbounded" minOccurs="1" ref="ACKEntry">
+								 	</xs:element>
+								</xs:sequence> 	
+								<xs:sequence> 	
+                                    <xs:annotation>
+				                        <xs:appinfo source="http://www.ogf.org/dfdl/">
+                       						  <dfdl:discriminator>{./BatchHeaderRecord/StandardEntryClassCode eq 'ATX'}</dfdl:discriminator>
+                   						</xs:appinfo>
+               						</xs:annotation>
+									<xs:element maxOccurs="unbounded" minOccurs="1" ref="ATXEntry">
+								 	</xs:element>
+								</xs:sequence> 	
+								<xs:sequence> 	
+                                    <xs:annotation>
+				                        <xs:appinfo source="http://www.ogf.org/dfdl/">
+                       						  <dfdl:assert message="Unsupported Entry Class Code">{fn:false()}</dfdl:assert>
+                   						</xs:appinfo>
+               						</xs:annotation>
+							 	</xs:sequence>
+							</xs:choice>
+							<xs:element ref="BatchControlRecord">
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="FileControlRecord">
+				</xs:element>
+				<xs:element maxOccurs="unbounded" minOccurs="0" ref="ExtraRecord">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- CCD can have zero or one addenda records -->
+	<xs:element dfdl:lengthKind="implicit" name="CCDEntry">
+	  <xs:complexType>
+	    <xs:sequence>
+           	<xs:element ref="CCDEntryDetailRecord">
+		 	</xs:element>
+			<xs:element dfdl:occursCount="{xs:nonNegativeInteger(../CCDEntryDetailRecord/AddendaRecordIndicator)}" dfdl:occursCountKind="expression" minOccurs="0" ref="CCDAddendaRecord">
+			</xs:element>
+	    </xs:sequence>	
+	  </xs:complexType>
+	</xs:element>
+	
+	<!-- CTX can have zero or any number of addenda records -->
+	<xs:element dfdl:lengthKind="implicit" name="CTXEntry">
+	  <xs:complexType>
+		<xs:sequence>
+			<xs:element ref="CTXEntryDetailRecord">
+			</xs:element>
+			<xs:element dfdl:occursCount="{xs:nonNegativeInteger(../CTXEntryDetailRecord/NumberOfAddendaRecords)}" dfdl:occursCountKind="expression" maxOccurs="9999" minOccurs="0" ref="CTXAddendaRecord">
+			</xs:element>
+		</xs:sequence>
+	  </xs:complexType>
+	</xs:element>
+
+	<!-- ACK can have zero or one addenda records -->
+	<xs:element dfdl:lengthKind="implicit" name="ACKEntry">
+	  <xs:complexType>
+	    <xs:sequence>
+           	<xs:element ref="ACKEntryDetailRecord">
+		 	</xs:element>
+			<xs:element dfdl:occursCount="{xs:nonNegativeInteger(../ACKEntryDetailRecord/AddendaRecordIndicator)}" dfdl:occursCountKind="expression" minOccurs="0" ref="ACKAddendaRecord">
+			</xs:element>
+	    </xs:sequence>	
+	  </xs:complexType>
+	</xs:element>
+	
+	<!-- ATX can have zero or one addenda records -->
+	<xs:element dfdl:lengthKind="implicit" name="ATXEntry">
+	  <xs:complexType>
+		<xs:sequence>
+			<xs:element ref="ATXEntryDetailRecord">
+			</xs:element>
+			<xs:element dfdl:occursCount="{xs:nonNegativeInteger(../ATXEntryDetailRecord/AddendaRecordIndicator)}" dfdl:occursCountKind="expression" minOccurs="0" ref="ATXAddendaRecord">
+			</xs:element>
+		</xs:sequence>
+	  </xs:complexType>
+	</xs:element>
+
+</xs:schema>

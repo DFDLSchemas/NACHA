@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+	******************************************************************
+	* 
+    * Permission has been granted to IBM by NACHA - The Electronic Payments 
+    * Association to publish the following schema which contains material 
+    * derived from the 2013 NACHA Operating Rules and Guidelines. 
+    *
+    * NACHA and IBM hereby grant permission, to those obtaining a copy of these 
+    * materials to use, copy and modify the materials solely for use in DFDL processors. 
+    * THESE MATERIALS ARE PROVIDED AS IS WITH NO WARRANTIES OF ANY KIND.  
+    * 
+    * © 2014 NACHA - The Electronic Payments Association
+    *
+    * © Copyright International Business Machines Corporation, 2014. 	
+	*
+	******************************************************************
+	*
+	* Version 1.0 	nacha_records.xsd
+	*
+	* This DFDL schema is one of a set of schemas that model ACH files.
+	* It provides a set of DFDL-annotated objects for the ACH record formats.   
+	* 
+	* To use the schema in another NACHA DFDL schema: 
+	*   <xs:include schemaLocation="nacha_record.xsd"/>
+	*
+	* Not all entry detail records are currently modeled.
+	*
+	******************************************************************
+--><xs:schema targetNamespace="ach:2013" xmlns="ach:2013" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ref="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" >
+	
+	<xs:import namespace="http://www.ibm.com/dfdl/NACHAFormat" schemaLocation="nacha_format.xsd"/>
+	<xs:include schemaLocation="nacha_elements.xsd"/>
+	
+	<xs:annotation>
+		<xs:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="ref:NACHAFormat"/>
+		</xs:appinfo>
+	</xs:annotation>
+	
+	<xs:element dfdl:ref="ref:NACHARecord" name="FileHeaderRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not File Header Record">{. eq '1'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="PriorityCode">
+				</xs:element>
+				<xs:element ref="ImmediateDestination">
+				</xs:element>
+				<xs:element ref="ImmediateOrigin">
+				</xs:element>
+				<xs:element ref="FileCreationDate">
+				</xs:element>
+				<xs:element ref="FileCreationTime">
+				</xs:element>
+				<xs:element ref="FileIdModifier">
+				</xs:element>
+				<xs:element ref="RecordSize">
+				</xs:element>
+				<xs:element ref="BlockingFactor">
+				</xs:element>
+				<xs:element ref="FormatCode">
+				</xs:element>
+				<xs:element ref="ImmediateDestinationName">
+				</xs:element>
+				<xs:element ref="ImmediateOriginName">
+				</xs:element>
+				<xs:element ref="ReferenceCode">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="FileControlRecord">
+		<xs:complexType>
+			<xs:sequence>
+				 <xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not File Control Record">{. eq '9'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="BatchCount">
+				</xs:element>
+				<xs:element ref="BlockCount">
+				</xs:element>
+				<xs:element dfdl:length="8" ref="EntryCount">
+				</xs:element>
+				<xs:element ref="EntryHash">
+				</xs:element>
+				<xs:element ref="TotalDebit">
+				</xs:element>
+				<xs:element ref="TotalCredit">
+				</xs:element>
+				<xs:element dfdl:length="39" ref="Reserved">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="BatchHeaderRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Batch Header Record">{. eq '5'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ServiceClassCode">
+				</xs:element>
+				<xs:element ref="CompanyName">
+				</xs:element>
+				<xs:element ref="CompanyDiscretionaryData">
+				</xs:element>
+				<xs:element ref="CompanyIdentification">
+				</xs:element>
+				<xs:element ref="StandardEntryClassCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Unsupported Entry Class Code">
+								<!-- Note: This uses 'not'/'and' instead of 'or' to avoid a C memory leak -->
+							    {fn:not(. ne 'CCD' and . ne 'CTX' and . ne 'ACK' and . ne 'ATX')}
+							</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="CompanyEntryDescription">
+				</xs:element>
+				<xs:element ref="CompanyDescriptiveDate">
+				</xs:element>
+				<xs:element ref="EffectiveEntryDate">
+				</xs:element>
+				<xs:element ref="SettlementDate">
+				</xs:element>
+				<xs:element ref="OriginStatusCode">
+				</xs:element>
+				<xs:element ref="OriginDFIIdentification">
+				</xs:element>
+				<xs:element ref="BatchNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="BatchControlRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Batch Control Record">{. eq '8'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="ServiceClassCode">
+				</xs:element>
+				<xs:element dfdl:length="6" ref="EntryCount">
+				</xs:element>
+				<xs:element ref="EntryHash">
+				</xs:element>
+				<xs:element ref="TotalDebit">
+				</xs:element>
+				<xs:element ref="TotalCredit">
+				</xs:element>
+				<xs:element ref="CompanyIdentification">
+				</xs:element>
+				<xs:element ref="MessageAuthenticationCode">
+				</xs:element>
+				<xs:element dfdl:length="6" ref="Reserved">
+				</xs:element>
+				<xs:element ref="OriginDFIIdentification">
+				</xs:element>
+				<xs:element ref="BatchNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="CCDEntryDetailRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Entry Detail Record">{. eq '6'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="TransactionCode">
+				</xs:element>
+				<xs:element ref="ReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="CheckDigit">
+				</xs:element>
+				<xs:element ref="DFIAccountNumber">
+				</xs:element>
+				<xs:element ref="Amount">
+				</xs:element>
+				<xs:element ref="IdentificationNumber">
+				</xs:element>
+				<xs:element dfdl:length="22" ref="ReceivingCompanyName">
+				</xs:element>
+				<xs:element ref="DiscretionaryData">
+				</xs:element>
+				<xs:element ref="AddendaRecordIndicator">
+				</xs:element>
+				<xs:element ref="TraceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="CCDAddendaRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="AddendaTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="PaymentRelatedInfo">
+				</xs:element>
+				<xs:element ref="AddendaSequenceNumber">
+				</xs:element>
+				<xs:element ref="EntryDetailSequenceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="CTXEntryDetailRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Entry Detail Record">{. eq '6'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="TransactionCode">
+				</xs:element>
+				<xs:element ref="ReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="CheckDigit">
+				</xs:element>
+				<xs:element ref="DFIAccountNumber">
+				</xs:element>
+				<xs:element ref="Amount">
+				</xs:element>
+				<xs:element ref="IdentificationNumber">
+				</xs:element>
+				<xs:element ref="NumberOfAddendaRecords">
+				</xs:element>
+				<xs:element dfdl:length="16" ref="ReceivingCompanyName">
+				</xs:element>
+				<xs:element dfdl:length="2" ref="Reserved">
+				</xs:element>
+				<xs:element ref="DiscretionaryData">
+				</xs:element>
+				<xs:element ref="AddendaRecordIndicator">
+				</xs:element>
+				<xs:element ref="TraceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="CTXAddendaRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="AddendaTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="PaymentRelatedInfo">
+				</xs:element>
+				<xs:element ref="AddendaSequenceNumber">
+				</xs:element>
+				<xs:element ref="EntryDetailSequenceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ACKEntryDetailRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Entry Detail Record">{. eq '6'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="TransactionCode">
+				</xs:element>
+				<xs:element ref="ReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="CheckDigit">
+				</xs:element>
+				<xs:element ref="DFIAccountNumber">
+				</xs:element>
+				<xs:element ref="Amount">
+				</xs:element>
+				<xs:element ref="OriginalEntryTraceNumber">
+				</xs:element>
+				<xs:element dfdl:length="22" ref="ReceivingCompanyName">
+				</xs:element>
+				<xs:element ref="DiscretionaryData">
+				</xs:element>
+				<xs:element ref="AddendaRecordIndicator">
+				</xs:element>
+				<xs:element ref="TraceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ACKAddendaRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="AddendaTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="PaymentRelatedInfo">
+				</xs:element>
+				<xs:element ref="AddendaSequenceNumber">
+				</xs:element>
+				<xs:element ref="EntryDetailSequenceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ATXEntryDetailRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Entry Detail Record">{. eq '6'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="TransactionCode">
+				</xs:element>
+				<xs:element ref="ReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="CheckDigit">
+				</xs:element>
+				<xs:element ref="DFIAccountNumber">
+				</xs:element>
+				<xs:element ref="Amount">
+				</xs:element>
+				<xs:element ref="OriginalEntryTraceNumber">
+				</xs:element>
+				<xs:element ref="NumberOfAddendaRecords">
+				</xs:element>
+				<xs:element dfdl:length="16" ref="ReceivingCompanyName">
+				</xs:element>
+				<xs:element dfdl:length="2" ref="Reserved">
+				</xs:element>
+				<xs:element ref="DiscretionaryData">
+				</xs:element>
+				<xs:element ref="AddendaRecordIndicator">
+				</xs:element>
+				<xs:element ref="TraceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ATXAddendaRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="AddendaTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="PaymentRelatedInfo">
+				</xs:element>
+				<xs:element ref="AddendaSequenceNumber">
+				</xs:element>
+				<xs:element ref="EntryDetailSequenceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ExtraRecord" type="xs:string">
+	</xs:element>
+	
+</xs:schema>

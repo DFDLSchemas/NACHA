@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    ******************************************************************
+	* 
+    * Permission has been granted to IBM by NACHA - The Electronic Payments 
+    * Association to publish the following schema which contains material 
+    * derived from the 2013 NACHA Operating Rules and Guidelines. 
+    *
+    * NACHA and IBM hereby grant permission, to those obtaining a copy of these 
+    * materials to use, copy and modify the materials solely for use in DFDL processors. 
+    * THESE MATERIALS ARE PROVIDED AS IS WITH NO WARRANTIES OF ANY KIND.  
+    * 
+    * © 2014 NACHA - The Electronic Payments Association
+    *
+    * © Copyright International Business Machines Corporation, 2014. 	
+	*
+	******************************************************************
+	*
+	* Version 1.0 	nacha_types.xsd
+	*
+	* This DFDL schema is one of a set of schemas that model ACH files.
+	* It provides a set of DFDL-annotated simple types for the fields that
+	* make up ACH record formats.   
+	* 
+	* To use the schema in another NACHA DFDL schema: 
+	*   <xs:include schemaLocation="nacha_types.xsd"/>
+	*
+	* Fields are modeled with type xs:string so that the DFDL parser is able
+	* to parse a field that is in error without throwing a processing error.
+	*
+	******************************************************************
+--><xsd:schema targetNamespace="ach:2013" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns="ach:2013" xmlns:ref="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/NACHAFormat" schemaLocation="nacha_format.xsd"/>
+        
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="ref:NACHAFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+	
+   <xsd:simpleType dfdl:length="4" name="time_string">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(\d{4})|(\s*)"/>
+      <xsd:minLength value="0"/>
+      <xsd:maxLength value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+    <xsd:simpleType dfdl:length="6" name="date_string">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(\d{6})|(\s*)"/>
+      <xsd:minLength value="0"/>
+      <xsd:maxLength value="6"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+    <xsd:simpleType name="alphanumeric_string">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="upperalphanumeric_string">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[A-Z\d]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+    <xsd:simpleType dfdl:textStringJustification="right" dfdl:textStringPadCharacter="0" dfdl:textTrimKind="none" name="numeric_string">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="(\d+)|(\s*)"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+    
+
+</xsd:schema>

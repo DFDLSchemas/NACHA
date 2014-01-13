@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    ******************************************************************
+	* 
+    * Permission has been granted to IBM by NACHA - The Electronic Payments 
+    * Association to publish the following schema which contains material 
+    * derived from the 2013 NACHA Operating Rules and Guidelines. 
+    *
+    * NACHA and IBM hereby grant permission, to those obtaining a copy of these 
+    * materials to use, copy and modify the materials solely for use in DFDL processors. 
+    * THESE MATERIALS ARE PROVIDED AS IS WITH NO WARRANTIES OF ANY KIND.  
+    * 
+    * © 2014 NACHA - The Electronic Payments Association
+    *
+    * © Copyright International Business Machines Corporation, 2014. 	
+	*
+	******************************************************************
+	*
+	* Version 1.0 	nacha_elements.xsd
+	*
+	* This DFDL schema is one of a set of schemas that model ACH files.
+	* It provides a set of DFDL-annotated elements for the fields that
+	* make up ACH record formats.   
+	* 
+	* To use the schema in another NACHA DFDL schema: 
+	*   <xs:include schemaLocation="nacha_elements.xsd"/>
+	*
+	* Not all fields are currently modeled.
+	*
+	* Fields are modeled with type xs:string so that the DFDL parser is able
+	* to parse a field that is in error without throwing a processing error.
+	*
+	* Some fields are used in multiple records. Some of those have different
+	* lengths depending on the record. In such cases, the dfdl:length is carried
+	* on the element ref and not the element itself.
+	*
+	* Because ACH record formats consist of fixed length fields, in DFDL terms all
+	* fields are 'required' with minOccurs '1' and maxoccurs '1'. Fields that are
+	* marked as optional (O) or conditional (R) in the ACH specification appear as 
+	* blanks. Such fields must have a default value provided. 
+	*
+	******************************************************************
+--><xs:schema targetNamespace="ach:2013" xmlns="ach:2013" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ref="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+                <xs:include schemaLocation="nacha_types.xsd"/>
+    <xs:import namespace="http://www.ibm.com/dfdl/NACHAFormat" schemaLocation="nacha_format.xsd"/>
+		
+	<xs:annotation>
+		<xs:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="ref:NACHAFormat"/>
+		</xs:appinfo>
+	</xs:annotation>
+	
+	<xs:element dfdl:length="1" name="AddendaRecordIndicator" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="2" name="AddendaTypeCode" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="4" name="AddendaSequenceNumber" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="10" dfdl:textNumberPattern="########V00" name="Amount" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="6" name="BatchCount" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="7" name="BatchNumber" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="6" name="BlockCount" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="2" name="BlockingFactor" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="1" name="CheckDigit" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="16" name="CompanyName" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="20" name="CompanyDiscretionaryData" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Conditional -->
+	<xs:element default="" dfdl:length="10" name="CompanyIdentification" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="10" name="CompanyEntryDescription" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="6" name="CompanyDescriptiveDate" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Conditional -->
+	<xs:element default="" dfdl:length="17" name="DFIAccountNumber" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="2" name="DiscretionaryData" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Conditional -->
+	<xs:element default="" name="EffectiveEntryDate" type="date_string">
+	</xs:element>
+
+	<!-- Length varies -->
+	<xs:element name="EntryCount" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="10" name="EntryHash" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="7" name="EntryDetailSequenceNumber" type="numeric_string">
+	</xs:element>
+
+	<xs:element name="FileCreationDate" type="date_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" name="FileCreationTime" type="time_string">
+	</xs:element>
+
+	<xs:element dfdl:length="1" name="FileIdModifier" type="upperalphanumeric_string">
+	</xs:element>
+
+	<!-- Must be '1' -->
+	<xs:element dfdl:length="1" fixed="1" name="FormatCode" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="15" name="IdentificationNumber" type="alphanumeric_string">
+	</xs:element>
+	
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="23" name="ImmediateDestinationName" type="alphanumeric_string">
+	</xs:element>
+	
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="23" name="ImmediateOriginName" type="alphanumeric_string">
+	</xs:element>
+	
+	<xs:element dfdl:length="10" dfdl:textStringJustification="right" name="ImmediateDestination" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="10" dfdl:textStringJustification="right" name="ImmediateOrigin" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Conditional -->
+	<xs:element default="" dfdl:length="22" name="IndividualName" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="19" name="MessageAuthenticationCode" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="4" name="NumberOfAddendaRecords" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="1" name="OriginStatusCode" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="8" name="OriginDFIIdentification" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="15" name="OriginalEntryTraceNumber" type="numeric_string">
+    </xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="80" name="PaymentRelatedInfo" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Conditional -->
+	<xs:element default="" dfdl:length="2" name="PaymentTypeCode" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Conditional -->
+	<xs:element dfdl:length="2" name="PriorityCode" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="8" name="ReceivingDFIIdentification" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="1" name="RecordTypeCode" type="numeric_string">
+	</xs:element>
+
+	<!-- Must be '094' -->
+	<xs:element dfdl:length="3" fixed="094" name="RecordSize" type="numeric_string">
+	</xs:element>
+
+	<!-- Conditional, length varies -->
+	<xs:element default="" name="ReceivingCompanyName" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" dfdl:length="8" name="ReferenceCode" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional, length varies -->
+	<xs:element default="" name="Reserved" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="3" name="ServiceClassCode" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="3" name="StandardEntryClassCode" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="3" name="SettlementDate" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="2" name="TransactionCode" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="15" name="TraceNumber" type="numeric_string">
+    </xs:element>
+
+	<xs:element dfdl:length="12" dfdl:textNumberPattern="##########V00" name="TotalDebit" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="12" dfdl:textNumberPattern="##########V00" name="TotalCredit" type="numeric_string">
+	</xs:element>
+
+</xs:schema>
