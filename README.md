@@ -8,7 +8,7 @@ The messages correspond to the following releases of the NACHA Operating Rules a
 
 To download the repository go to http://dfdlschemas.github.com/NACHA/.
 
-A NACHA file consists of a File Header record, repeating batches and a File Control record.
+A NACHA message is referred to as a file, and consists of a File Header record, repeating batches and a File Control record.
 A batch consists of a Batch Header record, repeating entries and a Batch Control record.
 An entry consists of an Entry Detail record optionally followed by Addenda records.
 Entry Detail records of the following types are currently supported:
@@ -38,7 +38,7 @@ A DFDL schema that provides a set of DFDL-annotated elements for NACHA records.
 
 nacha_file.xsd
 --------------
-A DFDL schema that provides a DFDL-annotated element to model a NACHA file. 
+A DFDL schema that provides a DFDL-annotated element to model an overall NACHA message (file).
 
 ----------------
 NACHA 2013 Operating Rules and Guidelines may be purchased from the NACHA website: www.nacha.org
