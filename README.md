@@ -1,5 +1,5 @@
-NACHA 2013 Electronic Payment messages
-======================================
+NACHA Electronic Payment messages
+=================================
 
 This GitHub repository holds DFDL schemas that model NACHA - The Electronic Payments Association messages.
 The messages are as specified by the 2013 NACHA Operating Rules and Guidelines. 
