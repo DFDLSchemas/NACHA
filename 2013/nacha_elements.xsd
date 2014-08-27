@@ -15,7 +15,7 @@
 	*
 	******************************************************************
 	*
-	* Version 1.0 	nacha_elements.xsd
+	* Version 1.1 	nacha_elements.xsd
 	*
 	* This DFDL schema is one of a set of schemas that model ACH files.
 	* It provides a set of DFDL-annotated elements for the fields that
@@ -41,7 +41,7 @@
 	******************************************************************
 --><xs:schema targetNamespace="ach:2013" xmlns="ach:2013" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ref="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-                <xs:include schemaLocation="nacha_types.xsd"/>
+    <xs:include schemaLocation="nacha_types.xsd"/>
     <xs:import namespace="http://www.ibm.com/dfdl/NACHAFormat" schemaLocation="nacha_format.xsd"/>
 		
 	<xs:annotation>
@@ -50,6 +50,10 @@
 		</xs:appinfo>
 	</xs:annotation>
 	
+	<!-- Optional, length varies -->
+	<xs:element default="" name="AddendaInformation" type="alphanumeric_string">
+	</xs:element>
+
 	<xs:element dfdl:length="1" name="AddendaRecordIndicator" type="numeric_string">
 	</xs:element>
 
@@ -95,6 +99,17 @@
 	<xs:element default="" dfdl:length="6" name="CompanyDescriptiveDate" type="alphanumeric_string">
 	</xs:element>
 
+	<xs:element dfdl:length="3" name="ContestedDishonoredReturnReasonCode" type="alphanumeric_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" name="DateOfDeath" type="date_string">
+	</xs:element>
+
+	<!-- Optional -->
+	<xs:element default="" name="DateOriginalEntryReturned" type="date_string">
+	</xs:element>
+
 	<!-- Conditional -->
 	<xs:element default="" dfdl:length="17" name="DFIAccountNumber" type="alphanumeric_string">
 	</xs:element>
@@ -102,6 +117,16 @@
 	<!-- Optional -->
 	<xs:element default="" dfdl:length="2" name="DiscretionaryData" type="alphanumeric_string">
 	</xs:element>
+
+	<!-- Length varies -->
+	<xs:element name="DishonoredReturnReasonCode" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="3" name="DishonoredReturnSettlementDate" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="15" name="DishonoredReturnTraceNumber" type="numeric_string">
+    </xs:element>
 
 	<!-- Conditional -->
 	<xs:element default="" name="EffectiveEntryDate" type="date_string">
@@ -166,8 +191,16 @@
 	<xs:element dfdl:length="8" name="OriginDFIIdentification" type="alphanumeric_string">
 	</xs:element>
 
+	<!-- Conditional -->
+	<xs:element default="" dfdl:length="8" name="OriginalReceivingDFIIdentification" type="alphanumeric_string">
+	</xs:element>
+
 	<xs:element dfdl:length="15" name="OriginalEntryTraceNumber" type="numeric_string">
     </xs:element>
+
+	<!-- Conditional -->
+	<xs:element default="" dfdl:length="3" name="OriginalSettlementDate" type="numeric_string">
+	</xs:element>
 
 	<!-- Optional -->
 	<xs:element default="" dfdl:length="80" name="PaymentRelatedInfo" type="alphanumeric_string">
@@ -178,7 +211,7 @@
 	</xs:element>
 
 	<!-- Conditional -->
-	<xs:element dfdl:length="2" name="PriorityCode" type="numeric_string">
+	<xs:element default="0" dfdl:length="2" name="PriorityCode" type="numeric_string">
 	</xs:element>
 
 	<xs:element dfdl:length="8" name="ReceivingDFIIdentification" type="alphanumeric_string">
@@ -199,9 +232,22 @@
 	<xs:element default="" dfdl:length="8" name="ReferenceCode" type="alphanumeric_string">
 	</xs:element>
 
+	<xs:element dfdl:length="2" name="RefusedAcknowledgementCode" type="alphanumeric_string">
+	</xs:element>
+
 	<!-- Optional, length varies -->
 	<xs:element default="" name="Reserved" type="alphanumeric_string">
 	</xs:element>
+
+	<!-- Length varies -->
+	<xs:element name="ReturnReasonCode" type="alphanumeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="3" name="ReturnSettlementDate" type="numeric_string">
+	</xs:element>
+
+	<xs:element dfdl:length="15" name="ReturnTraceNumber" type="numeric_string">
+    </xs:element>
 
 	<xs:element dfdl:length="3" name="ServiceClassCode" type="numeric_string">
 	</xs:element>

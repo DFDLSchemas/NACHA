@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?><ACHFile xmlns="ach:2013" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <FileHeaderRecord>
+      <RecordTypeCode xsi:type="xs:string">1</RecordTypeCode>
+      <PriorityCode xsi:type="xs:string">01</PriorityCode>
+      <ImmediateDestination xsi:type="xs:string"> 123456789</ImmediateDestination>
+      <ImmediateOrigin xsi:type="xs:string"> 987654321</ImmediateOrigin>
+      <FileCreationDate xsi:type="xs:string">071030</FileCreationDate>
+      <FileCreationTime xsi:type="xs:string">1634</FileCreationTime>
+      <FileIdModifier xsi:type="xs:string">A</FileIdModifier>
+      <RecordSize xsi:type="xs:string">094</RecordSize>
+      <BlockingFactor xsi:type="xs:string">10</BlockingFactor>
+      <FormatCode xsi:type="xs:string">1</FormatCode>
+      <ImmediateDestinationName xsi:type="xs:string">TEST Destination       </ImmediateDestinationName>
+      <ImmediateOriginName xsi:type="xs:string">TEST Origination       </ImmediateOriginName>
+      <ReferenceCode xsi:type="xs:string">        </ReferenceCode>
+   </FileHeaderRecord>
+   <Batch>
+      <BatchHeaderRecord>
+         <RecordTypeCode xsi:type="xs:string">5</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">200</ServiceClassCode>
+         <CompanyName xsi:type="xs:string">VIA LICENSING CO</CompanyName>
+         <CompanyDiscretionaryData xsi:type="xs:string">                    </CompanyDiscretionaryData>
+         <CompanyIdentification xsi:type="xs:string">1943024325</CompanyIdentification>
+         <StandardEntryClassCode xsi:type="xs:string">CTX</StandardEntryClassCode>
+         <CompanyEntryDescription xsi:type="xs:string">CORP PYMT </CompanyEntryDescription>
+         <CompanyDescriptiveDate xsi:type="xs:string">      </CompanyDescriptiveDate>
+         <EffectiveEntryDate xsi:type="xs:string">      </EffectiveEntryDate>
+         <SettlementDate xsi:type="xs:string">333</SettlementDate>
+         <OriginStatusCode xsi:type="xs:string">1</OriginStatusCode>
+         <OriginDFIIdentification xsi:type="xs:string">01100013</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">1000000</BatchNumber>
+      </BatchHeaderRecord>
+      <CTXEntry>
+         <CTXEntryDetailRecord>
+            <RecordTypeCode xsi:type="xs:string">6</RecordTypeCode>
+            <TransactionCode xsi:type="xs:string">22</TransactionCode>
+            <ReceivingDFIIdentification xsi:type="xs:string">12104288</ReceivingDFIIdentification>
+            <CheckDigit xsi:type="xs:string">2</CheckDigit>
+            <DFIAccountNumber xsi:type="xs:string">0290150341       </DFIAccountNumber>
+            <Amount xsi:type="xs:string">0011299843</Amount>
+            <IdentificationNumber xsi:type="xs:string">0080028035     </IdentificationNumber>
+            <NumberOfAddendaRecords xsi:type="xs:string">0007</NumberOfAddendaRecords>
+            <ReceivingCompanyName xsi:type="xs:string">                </ReceivingCompanyName>
+            <Reserved xsi:type="xs:string">  </Reserved>
+            <DiscretionaryData xsi:type="xs:string">  </DiscretionaryData>
+            <AddendaRecordIndicator xsi:type="xs:string">1</AddendaRecordIndicator>
+            <TraceNumber xsi:type="xs:string">011000132000001</TraceNumber>
+         </CTXEntryDetailRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">ISA*00*NVTEST1   *00*NVTEST2   *ZZ*NVTEST3        *ZZ*NVTEST4        *060807*122</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0001</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">4*&amp;*00402*000000001*0*P*?\GS*RA*NV*NV*20060807*1224*0*X*005010\ST*820*0001\BPR*I</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0002</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">*112998.43*C*ACH*CTX*01*011000138*DA*0055158594*1943024325**01*121042882*DA*0290</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0003</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">150341**VEN\N1*PE*VIA LICENSING CORPORATION*97*0080028035\N3*1234 BRANNAN STREET</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0004</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">  STE 200\N4*SAN FRANCISCO*CA*941034888*US\ENT*1\RMR*OI*0140611**11730.00*1170.0</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0005</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">0*0.00\RMR*OI*0140611**56376.97*57503.64*1126.67\RMR*OI*0140845**57791.46*58970.</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0006</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">88*1179.42\SE*10*0001\GE*1*0\IEA*1*000000001\                                   </PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0007</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000001</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+      </CTXEntry>
+      <BatchControlRecord>
+         <RecordTypeCode xsi:type="xs:string">8</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">200</ServiceClassCode>
+         <EntryCount xsi:type="xs:string">000008</EntryCount>
+         <EntryHash xsi:type="xs:string">0012104288</EntryHash>
+         <TotalDebit xsi:type="xs:string">000000000000</TotalDebit>
+         <TotalCredit xsi:type="xs:string">000011299843</TotalCredit>
+         <CompanyIdentification xsi:type="xs:string">1943024325</CompanyIdentification>
+         <MessageAuthenticationCode xsi:type="xs:string">                   </MessageAuthenticationCode>
+         <Reserved xsi:type="xs:string">      </Reserved>
+         <OriginDFIIdentification xsi:type="xs:string">01100013</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">1000000</BatchNumber>
+      </BatchControlRecord>
+   </Batch>
+   <Batch>
+      <BatchHeaderRecord>
+         <RecordTypeCode xsi:type="xs:string">5</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">200</ServiceClassCode>
+         <CompanyName xsi:type="xs:string">VIA LICENSING CO</CompanyName>
+         <CompanyDiscretionaryData xsi:type="xs:string">                    </CompanyDiscretionaryData>
+         <CompanyIdentification xsi:type="xs:string">1943024325</CompanyIdentification>
+         <StandardEntryClassCode xsi:type="xs:string">CTX</StandardEntryClassCode>
+         <CompanyEntryDescription xsi:type="xs:string">CORP PYMT </CompanyEntryDescription>
+         <CompanyDescriptiveDate xsi:type="xs:string">      </CompanyDescriptiveDate>
+         <EffectiveEntryDate xsi:type="xs:string">      </EffectiveEntryDate>
+         <SettlementDate xsi:type="xs:string">333</SettlementDate>
+         <OriginStatusCode xsi:type="xs:string">1</OriginStatusCode>
+         <OriginDFIIdentification xsi:type="xs:string">01100013</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">1000000</BatchNumber>
+      </BatchHeaderRecord>
+      <CTXEntry>
+         <CTXEntryDetailRecord>
+            <RecordTypeCode xsi:type="xs:string">6</RecordTypeCode>
+            <TransactionCode xsi:type="xs:string">22</TransactionCode>
+            <ReceivingDFIIdentification xsi:type="xs:string">12104288</ReceivingDFIIdentification>
+            <CheckDigit xsi:type="xs:string">2</CheckDigit>
+            <DFIAccountNumber xsi:type="xs:string">0290150341       </DFIAccountNumber>
+            <Amount xsi:type="xs:string">0011299843</Amount>
+            <IdentificationNumber xsi:type="xs:string">0080028035     </IdentificationNumber>
+            <NumberOfAddendaRecords xsi:type="xs:string">0007</NumberOfAddendaRecords>
+            <ReceivingCompanyName xsi:type="xs:string">                </ReceivingCompanyName>
+            <Reserved xsi:type="xs:string">  </Reserved>
+            <DiscretionaryData xsi:type="xs:string">  </DiscretionaryData>
+            <AddendaRecordIndicator xsi:type="xs:string">1</AddendaRecordIndicator>
+            <TraceNumber xsi:type="xs:string">011000132000002</TraceNumber>
+         </CTXEntryDetailRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">ISA*00*NVTEST1   *00*NVTEST2   *ZZ*NVTEST3        *ZZ*NVTEST4        *060807*122</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0001</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">4*&amp;*00402*000000002*0*P*?\GS*RA*NV*NV*20060807*1224*0*X*005010\ST*820*0001\BPR*I</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0002</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">*112998.43*C*ACH*CTX*01*011000138*DA*0055158594*1943024325**01*121042882*DA*0290</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0003</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">150341**VEN\N1*PE*VIA LICENSING CORPORATION*97*0080028035\N3*1234 BRANNAN STREET</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0004</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">  STE 200\N4*SAN FRANCISCO*CA*941034888*US\ENT*1\RMR*OI*0140611**11730.00*1170.0</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0005</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">0*0.00\RMR*OI*0140611**56376.97*57503.64*1126.67\RMR*OI*0140845**57791.46*58970.</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0006</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">88*1179.42\SE*10*0001\GE*1*0\IEA*1*000000002\                                   </PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0007</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000002</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+      </CTXEntry>
+      <BatchControlRecord>
+         <RecordTypeCode xsi:type="xs:string">8</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">200</ServiceClassCode>
+         <EntryCount xsi:type="xs:string">000008</EntryCount>
+         <EntryHash xsi:type="xs:string">0012104288</EntryHash>
+         <TotalDebit xsi:type="xs:string">000000000000</TotalDebit>
+         <TotalCredit xsi:type="xs:string">000011299843</TotalCredit>
+         <CompanyIdentification xsi:type="xs:string">1943024325</CompanyIdentification>
+         <MessageAuthenticationCode xsi:type="xs:string">                   </MessageAuthenticationCode>
+         <Reserved xsi:type="xs:string">      </Reserved>
+         <OriginDFIIdentification xsi:type="xs:string">01100013</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">1000000</BatchNumber>
+      </BatchControlRecord>
+   </Batch>
+   <Batch>
+      <BatchHeaderRecord>
+         <RecordTypeCode xsi:type="xs:string">5</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">200</ServiceClassCode>
+         <CompanyName xsi:type="xs:string">BEST CASH BANK N</CompanyName>
+         <CompanyDiscretionaryData xsi:type="xs:string">                    </CompanyDiscretionaryData>
+         <CompanyIdentification xsi:type="xs:string">8942404110</CompanyIdentification>
+         <StandardEntryClassCode xsi:type="xs:string">CTX</StandardEntryClassCode>
+         <CompanyEntryDescription xsi:type="xs:string">CORP PYMNT</CompanyEntryDescription>
+         <CompanyDescriptiveDate xsi:type="xs:string">      </CompanyDescriptiveDate>
+         <EffectiveEntryDate xsi:type="xs:string">060807</EffectiveEntryDate>
+         <SettlementDate xsi:type="xs:string">333</SettlementDate>
+         <OriginStatusCode xsi:type="xs:string">1</OriginStatusCode>
+         <OriginDFIIdentification xsi:type="xs:string">12100035</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">1000000</BatchNumber>
+      </BatchHeaderRecord>
+      <CTXEntry>
+         <CTXEntryDetailRecord>
+            <RecordTypeCode xsi:type="xs:string">6</RecordTypeCode>
+            <TransactionCode xsi:type="xs:string">22</TransactionCode>
+            <ReceivingDFIIdentification xsi:type="xs:string">12100024</ReceivingDFIIdentification>
+            <CheckDigit xsi:type="xs:string">8</CheckDigit>
+            <DFIAccountNumber xsi:type="xs:string">4945049120       </DFIAccountNumber>
+            <Amount xsi:type="xs:string">0278593129</Amount>
+            <IdentificationNumber xsi:type="xs:string">0056-2000752902</IdentificationNumber>
+            <NumberOfAddendaRecords xsi:type="xs:string">0010</NumberOfAddendaRecords>
+            <ReceivingCompanyName xsi:type="xs:string">ORANGE COMPUTER </ReceivingCompanyName>
+            <Reserved xsi:type="xs:string">  </Reserved>
+            <DiscretionaryData xsi:type="xs:string">  </DiscretionaryData>
+            <AddendaRecordIndicator xsi:type="xs:string">1</AddendaRecordIndicator>
+            <TraceNumber xsi:type="xs:string">121000352000003</TraceNumber>
+         </CTXEntryDetailRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">ISA*00*          *00*          *ZZ*PD2020         *17*121000358      *060804*155</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0001</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">6*U*00401*003126350*0*P*&gt;\GS*RA*PD2020*121000358*20060804*155607*263500001*X*005</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0002</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">010\ST*820*0103\BPR*C*2785931.29*C*ACH*CTX*01*121000358*DA*1233229195*8942404110</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0003</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">**01*121000248*DA*4945049120*20060807\TRN*1*0056-2000752902\CUR*PE*USD\REF*TN**C</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0004</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">ORP PYMNT\REF*X9*0000000468685019\REF*BT*000000614011\REF*2I*SAPPD2    Z_A56_OUT</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0005</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string"> 0056\REF*11*1233229195\REF*PQ*VIA LICENSING CORPOR941034888\REF*3N*USD 12100024</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0006</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">8 4945049120\REF*PH*1\REF*CA*00\N1*RB*BEST CASH BANK NA*SW*WFBIUS6S\N2*SORT CODE</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0007</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string"> 121000248\N3*ADDRESS UNKNOWN\N4*CITY UNKNOWN***US\N1*PR*ORANGE COMPUTER\N3*1 IN</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0008</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">FINITE LOOP\N4*CUPERTINO*CA*95014*US\ENT*1\RMR*IV*MP42006Q22000407**2785931.29*2</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0009</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+         <CTXAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">05</AddendaTypeCode>
+            <PaymentRelatedInfo xsi:type="xs:string">785931.29*0.00\DTM*003*20060719\SE*24*0103\GE*0001*263500001\IEA*0001*003126350\</PaymentRelatedInfo>
+            <AddendaSequenceNumber xsi:type="xs:string">0010</AddendaSequenceNumber>
+            <EntryDetailSequenceNumber xsi:type="xs:string">2000003</EntryDetailSequenceNumber>
+         </CTXAddendaRecord>
+      </CTXEntry>
+      <BatchControlRecord>
+         <RecordTypeCode xsi:type="xs:string">8</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">200</ServiceClassCode>
+         <EntryCount xsi:type="xs:string">000011</EntryCount>
+         <EntryHash xsi:type="xs:string">0012100024</EntryHash>
+         <TotalDebit xsi:type="xs:string">000000000000</TotalDebit>
+         <TotalCredit xsi:type="xs:string">000278593129</TotalCredit>
+         <CompanyIdentification xsi:type="xs:string">8942404110</CompanyIdentification>
+         <MessageAuthenticationCode xsi:type="xs:string">                   </MessageAuthenticationCode>
+         <Reserved xsi:type="xs:string">      </Reserved>
+         <OriginDFIIdentification xsi:type="xs:string">12100035</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">1000000</BatchNumber>
+      </BatchControlRecord>
+   </Batch>
+   <FileControlRecord>
+      <RecordTypeCode xsi:type="xs:string">9</RecordTypeCode>
+      <BatchCount xsi:type="xs:string">000003</BatchCount>
+      <BlockCount xsi:type="xs:string">000004</BlockCount>
+      <EntryCount xsi:type="xs:string">00000027</EntryCount>
+      <EntryHash xsi:type="xs:string">0036308600</EntryHash>
+      <TotalDebit xsi:type="xs:string">000000000000</TotalDebit>
+      <TotalCredit xsi:type="xs:string">000301192815</TotalCredit>
+      <Reserved xsi:type="xs:string">                                       </Reserved>
+   </FileControlRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+</ACHFile>

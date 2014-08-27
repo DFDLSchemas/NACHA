@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><ACHFile xmlns="ach:2013" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <FileHeaderRecord>
+      <RecordTypeCode xsi:type="xs:string">1</RecordTypeCode>
+      <PriorityCode xsi:type="xs:string">01</PriorityCode>
+      <ImmediateDestination xsi:type="xs:string"> 342232222</ImmediateDestination>
+      <ImmediateOrigin xsi:type="xs:string"> 345130936</ImmediateOrigin>
+      <FileCreationDate xsi:type="xs:string">900628</FileCreationDate>
+      <FileCreationTime xsi:type="xs:string">2015</FileCreationTime>
+      <FileIdModifier xsi:type="xs:string">A</FileIdModifier>
+      <RecordSize xsi:type="xs:string">094</RecordSize>
+      <BlockingFactor xsi:type="xs:string">10</BlockingFactor>
+      <FormatCode xsi:type="xs:string">1</FormatCode>
+      <ImmediateDestinationName xsi:type="xs:string">TTY Services           </ImmediateDestinationName>
+      <ImmediateOriginName xsi:type="xs:string">WXY Bank               </ImmediateOriginName>
+      <ReferenceCode xsi:type="xs:string">        </ReferenceCode>
+   </FileHeaderRecord>
+   <Batch>
+      <BatchHeaderRecord>
+         <RecordTypeCode xsi:type="xs:string">5</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">225</ServiceClassCode>
+         <CompanyName xsi:type="xs:string">AM Club         </CompanyName>
+         <CompanyDiscretionaryData xsi:type="xs:string">DUES                </CompanyDiscretionaryData>
+         <CompanyIdentification xsi:type="xs:string">1249999991</CompanyIdentification>
+         <StandardEntryClassCode xsi:type="xs:string">PPD</StandardEntryClassCode>
+         <CompanyEntryDescription xsi:type="xs:string">MONTH DUES</CompanyEntryDescription>
+         <CompanyDescriptiveDate xsi:type="xs:string">062590</CompanyDescriptiveDate>
+         <EffectiveEntryDate xsi:type="xs:string">900626</EffectiveEntryDate>
+         <SettlementDate xsi:type="xs:string">179</SettlementDate>
+         <OriginStatusCode xsi:type="xs:string">1</OriginStatusCode>
+         <OriginDFIIdentification xsi:type="xs:string">34513093</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">0000001</BatchNumber>
+      </BatchHeaderRecord>
+      <PPDEntry>
+         <PPDEntryDetailRecord>
+            <RecordTypeCode xsi:type="xs:string">6</RecordTypeCode>
+            <TransactionCode xsi:type="xs:string">26</TransactionCode>
+            <ReceivingDFIIdentification xsi:type="xs:string">27111111</ReceivingDFIIdentification>
+            <CheckDigit xsi:type="xs:string">3</CheckDigit>
+            <DFIAccountNumber xsi:type="xs:string">31872-76548      </DFIAccountNumber>
+            <Amount xsi:type="xs:string">0000060000</Amount>
+            <IdentificationNumber xsi:type="xs:string">5130           </IdentificationNumber>
+            <IndividualName xsi:type="xs:string">Beth Connor           </IndividualName>
+            <DiscretionaryData xsi:type="xs:string">07</DiscretionaryData>
+            <AddendaRecordIndicator xsi:type="xs:string">1</AddendaRecordIndicator>
+            <TraceNumber xsi:type="xs:string">345130930000001</TraceNumber>
+         </PPDEntryDetailRecord>
+         <ReturnsAddendaRecord>
+            <RecordTypeCode xsi:type="xs:string">7</RecordTypeCode>
+            <AddendaTypeCode xsi:type="xs:string">99</AddendaTypeCode>
+            <ReturnReasonCode xsi:type="xs:string">R01</ReturnReasonCode>
+            <OriginalEntryTraceNumber xsi:type="xs:string">271111110000301</OriginalEntryTraceNumber>
+            <DateOfDeath xsi:type="xs:string">      </DateOfDeath>
+            <OriginalReceivingDFIIdentification xsi:type="xs:string">34513093</OriginalReceivingDFIIdentification>
+            <AddendaInformation xsi:type="xs:string">                                            </AddendaInformation>
+            <TraceNumber xsi:type="xs:string">345130930000001</TraceNumber>
+         </ReturnsAddendaRecord>
+      </PPDEntry>
+      <BatchControlRecord>
+         <RecordTypeCode xsi:type="xs:string">8</RecordTypeCode>
+         <ServiceClassCode xsi:type="xs:string">225</ServiceClassCode>
+         <EntryCount xsi:type="xs:string">000002</EntryCount>
+         <EntryHash xsi:type="xs:string">0027111111</EntryHash>
+         <TotalDebit xsi:type="xs:string">000000060000</TotalDebit>
+         <TotalCredit xsi:type="xs:string">000000000000</TotalCredit>
+         <CompanyIdentification xsi:type="xs:string">1249999991</CompanyIdentification>
+         <MessageAuthenticationCode xsi:type="xs:string">                   </MessageAuthenticationCode>
+         <Reserved xsi:type="xs:string">      </Reserved>
+         <OriginDFIIdentification xsi:type="xs:string">34513093</OriginDFIIdentification>
+         <BatchNumber xsi:type="xs:string">0000001</BatchNumber>
+      </BatchControlRecord>
+   </Batch>
+   <FileControlRecord>
+      <RecordTypeCode xsi:type="xs:string">9</RecordTypeCode>
+      <BatchCount xsi:type="xs:string">000001</BatchCount>
+      <BlockCount xsi:type="xs:string">000001</BlockCount>
+      <EntryCount xsi:type="xs:string">00000002</EntryCount>
+      <EntryHash xsi:type="xs:string">0027111111</EntryHash>
+      <TotalDebit xsi:type="xs:string">000000060000</TotalDebit>
+      <TotalCredit xsi:type="xs:string">000000000000</TotalCredit>
+      <Reserved xsi:type="xs:string">                                       </Reserved>
+   </FileControlRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+   <ExtraRecord xsi:type="xs:string">9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999</ExtraRecord>
+</ACHFile>

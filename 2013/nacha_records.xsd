@@ -15,7 +15,7 @@
 	*
 	******************************************************************
 	*
-	* Version 1.0 	nacha_records.xsd
+	* Version 1.1 	nacha_records.xsd
 	*
 	* This DFDL schema is one of a set of schemas that model ACH files.
 	* It provides a set of DFDL-annotated objects for the ACH record formats.   
@@ -23,7 +23,12 @@
 	* To use the schema in another NACHA DFDL schema: 
 	*   <xs:include schemaLocation="nacha_record.xsd"/>
 	*
-	* Not all entry detail records are currently modeled.
+	* Entry detail records for CCD, CTX, PPD, ACK and ATX are currently modeled, 
+	* along with associated addenda records. Returns, Dishonored Returns and
+	* Contested Dishonored Returns are also modeled.
+	*
+	* Asserts are used to establish the type of record instead of discriminators.
+	* This allows the records to be safely used within any containing structure. 
 	*
 	******************************************************************
 --><xs:schema targetNamespace="ach:2013" xmlns="ach:2013" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ref="http://www.ibm.com/dfdl/NACHAFormat" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" >
@@ -125,8 +130,8 @@
 					<xs:annotation>
 						<xs:appinfo source="http://www.ogf.org/dfdl/">
 							<dfdl:assert message="Unsupported Entry Class Code">
-								<!-- Note: This uses 'not'/'and' instead of 'or' to avoid a C memory leak -->
-							    {fn:not(. ne 'CCD' and . ne 'CTX' and . ne 'ACK' and . ne 'ATX')}
+								<!-- Note: This uses 'not'/'and' instead of 'or' to avoid an IBM DFDL C memory leak -->
+							    {fn:not(. ne 'CCD' and . ne 'CTX' and . ne 'PPD' and . ne 'ACK' and . ne 'ATX')}
 							</dfdl:assert>
 						</xs:appinfo>
 					</xs:annotation>
@@ -217,32 +222,33 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element dfdl:ref="ref:NACHARecord" name="CCDAddendaRecord">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="RecordTypeCode">
-				 <xs:annotation> 
-				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
-				   </xs:appinfo>
-				  </xs:annotation>
-				</xs:element>
-				<xs:element ref="AddendaTypeCode">
-				 <xs:annotation> 
-				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
-				   </xs:appinfo>
-				  </xs:annotation>
-				</xs:element>
-				<xs:element ref="PaymentRelatedInfo">
-				</xs:element>
-				<xs:element ref="AddendaSequenceNumber">
-				</xs:element>
-				<xs:element ref="EntryDetailSequenceNumber">
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
+	<xs:element dfdl:ref="ref:NACHARecord" name="CCDAddendaRecord" type="CommonAddendaRecord">
 	</xs:element>
+
+	<xs:complexType name="CommonAddendaRecord">
+		<xs:sequence>
+			<xs:element ref="RecordTypeCode">
+			 <xs:annotation> 
+			   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+					<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+			   </xs:appinfo>
+			  </xs:annotation>
+			</xs:element>
+			<xs:element ref="AddendaTypeCode">
+			 <xs:annotation> 
+			   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+					<dfdl:assert message="Not Addenda Record">{. eq '05'}</dfdl:assert>
+			   </xs:appinfo>
+			  </xs:annotation>
+			</xs:element>
+			<xs:element ref="PaymentRelatedInfo">
+			</xs:element>
+			<xs:element ref="AddendaSequenceNumber">
+			</xs:element>
+			<xs:element ref="EntryDetailSequenceNumber">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
 
 	<xs:element dfdl:ref="ref:NACHARecord" name="CTXEntryDetailRecord">
 		<xs:complexType>
@@ -282,31 +288,44 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element dfdl:ref="ref:NACHARecord" name="CTXAddendaRecord">
+	<xs:element dfdl:ref="ref:NACHARecord" name="CTXAddendaRecord" type="CommonAddendaRecord">
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="PPDEntryDetailRecord">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="RecordTypeCode">
-				 <xs:annotation> 
-				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
-				   </xs:appinfo>
-				  </xs:annotation>
+					<xs:annotation>
+						<xs:appinfo source="http://www.ogf.org/dfdl/">
+							<dfdl:assert message="Not Entry Detail Record">{. eq '6'}</dfdl:assert>
+						</xs:appinfo>
+					</xs:annotation>
 				</xs:element>
-				<xs:element ref="AddendaTypeCode">
-				 <xs:annotation> 
-				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
-				   </xs:appinfo>
-				  </xs:annotation>
+				<xs:element ref="TransactionCode">
 				</xs:element>
-				<xs:element ref="PaymentRelatedInfo">
+				<xs:element ref="ReceivingDFIIdentification">
 				</xs:element>
-				<xs:element ref="AddendaSequenceNumber">
+				<xs:element ref="CheckDigit">
 				</xs:element>
-				<xs:element ref="EntryDetailSequenceNumber">
+				<xs:element ref="DFIAccountNumber">
+				</xs:element>
+				<xs:element ref="Amount">
+				</xs:element>
+				<xs:element ref="IdentificationNumber">
+				</xs:element>
+				<xs:element ref="IndividualName">
+				</xs:element>
+				<xs:element ref="DiscretionaryData">
+				</xs:element>
+				<xs:element ref="AddendaRecordIndicator">
+				</xs:element>
+				<xs:element ref="TraceNumber">
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="PPDAddendaRecord" type="CommonAddendaRecord">
 	</xs:element>
 
 	<xs:element dfdl:ref="ref:NACHARecord" name="ACKEntryDetailRecord">
@@ -333,8 +352,17 @@
 				</xs:element>
 				<xs:element dfdl:length="22" ref="ReceivingCompanyName">
 				</xs:element>
-				<xs:element ref="DiscretionaryData">
-				</xs:element>
+				<xs:choice dfdl:choiceLengthKind="implicit">
+					<xs:element ref="RefusedAcknowledgementCode">
+						<xs:annotation>
+							<xs:appinfo source="http://www.ogf.org/dfdl/">
+								<dfdl:discriminator>{. eq 'A1' or . eq 'A2' or . eq 'A3'}</dfdl:discriminator>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="DiscretionaryData">
+					</xs:element>
+				</xs:choice>
 				<xs:element ref="AddendaRecordIndicator">
 				</xs:element>
 				<xs:element ref="TraceNumber">
@@ -343,31 +371,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element dfdl:ref="ref:NACHARecord" name="ACKAddendaRecord">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="RecordTypeCode">
-				 <xs:annotation> 
-				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
-				   </xs:appinfo>
-				  </xs:annotation>
-				</xs:element>
-				<xs:element ref="AddendaTypeCode">
-				 <xs:annotation> 
-				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
-				   </xs:appinfo>
-				  </xs:annotation>
-				</xs:element>
-				<xs:element ref="PaymentRelatedInfo">
-				</xs:element>
-				<xs:element ref="AddendaSequenceNumber">
-				</xs:element>
-				<xs:element ref="EntryDetailSequenceNumber">
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
+	<xs:element dfdl:ref="ref:NACHARecord" name="ACKAddendaRecord" type="CommonAddendaRecord">
 	</xs:element>
 
 	<xs:element dfdl:ref="ref:NACHARecord" name="ATXEntryDetailRecord">
@@ -398,8 +402,17 @@
 				</xs:element>
 				<xs:element dfdl:length="2" ref="Reserved">
 				</xs:element>
-				<xs:element ref="DiscretionaryData">
-				</xs:element>
+				<xs:choice dfdl:choiceLengthKind="implicit">
+					<xs:element ref="RefusedAcknowledgementCode">
+						<xs:annotation>
+							<xs:appinfo source="http://www.ogf.org/dfdl/">
+								<dfdl:discriminator>{. eq 'A1' or . eq 'A2' or . eq 'A3'}</dfdl:discriminator>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="DiscretionaryData">
+					</xs:element>
+				</xs:choice>
 				<xs:element ref="AddendaRecordIndicator">
 				</xs:element>
 				<xs:element ref="TraceNumber">
@@ -408,7 +421,10 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element dfdl:ref="ref:NACHARecord" name="ATXAddendaRecord">
+	<xs:element dfdl:ref="ref:NACHARecord" name="ATXAddendaRecord" type="CommonAddendaRecord">
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ReturnsAddendaRecord">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element ref="RecordTypeCode">
@@ -421,15 +437,124 @@
 				<xs:element ref="AddendaTypeCode">
 				 <xs:annotation> 
 				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
-						<dfdl:assert message="Unsupported Addenda Record type">{. eq '05'}</dfdl:assert>
+						<dfdl:assert message="Not Returns Addenda Record">{. eq '99'}</dfdl:assert>
 				   </xs:appinfo>
 				  </xs:annotation>
 				</xs:element>
-				<xs:element ref="PaymentRelatedInfo">
+				<xs:element ref="ReturnReasonCode" dfdl:length="3">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Returns Addenda Record">{xs:unsignedByte(fn:substring(.,2,2)) le 60 or xs:unsignedByte(fn:substring(.,2,2)) ge 80}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
 				</xs:element>
-				<xs:element ref="AddendaSequenceNumber">
+				<xs:element ref="OriginalEntryTraceNumber">
 				</xs:element>
-				<xs:element ref="EntryDetailSequenceNumber">
+				<xs:element ref="DateOfDeath">
+				</xs:element>
+				<xs:element ref="OriginalReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="AddendaInformation" dfdl:length="44">
+				</xs:element>
+				<xs:element ref="TraceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="DishonoredReturnsAddendaRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="AddendaTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Returns Addenda Record">{. eq '99'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="DishonoredReturnReasonCode" dfdl:length="3">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Dishonored Returns Addenda Record">{xs:unsignedByte(fn:substring(.,2,2)) ge 61 and xs:unsignedByte(fn:substring(.,2,2)) le 69}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="OriginalEntryTraceNumber">
+				</xs:element>
+				<xs:element ref="Reserved" dfdl:length="6">
+				</xs:element>
+				<xs:element ref="OriginalReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="Reserved" dfdl:length="3">
+				</xs:element>
+				<xs:element ref="ReturnTraceNumber">
+				</xs:element>
+				<xs:element ref="ReturnSettlementDate">
+				</xs:element>
+				<xs:element ref="ReturnReasonCode" dfdl:length="2">
+				</xs:element>
+				<xs:element ref="AddendaInformation" dfdl:length="21">
+				</xs:element>
+				<xs:element ref="TraceNumber">
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element dfdl:ref="ref:NACHARecord" name="ContestedDishonoredReturnsAddendaRecord">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RecordTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Addenda Record">{. eq '7'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="AddendaTypeCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Returns Addenda Record">{. eq '99'}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="ContestedDishonoredReturnReasonCode">
+				 <xs:annotation> 
+				   <xs:appinfo source="http://www.ogf.org/dfdl/"> 
+						<dfdl:assert message="Not Contested Dishonored Returns Addenda Record">{xs:unsignedByte(fn:substring(.,2,2)) ge 71 and xs:unsignedByte(fn:substring(.,2,2)) le 76}</dfdl:assert>
+				   </xs:appinfo>
+				  </xs:annotation>
+				</xs:element>
+				<xs:element ref="OriginalEntryTraceNumber">
+				</xs:element>
+				<xs:element ref="DateOriginalEntryReturned">
+				</xs:element>
+				<xs:element ref="OriginalReceivingDFIIdentification">
+				</xs:element>
+				<xs:element ref="OriginalSettlementDate">
+				</xs:element>
+				<xs:element ref="ReturnTraceNumber"> 
+				</xs:element>
+				<xs:element ref="ReturnSettlementDate">
+				</xs:element>
+				<xs:element ref="ReturnReasonCode" dfdl:length="2">
+				</xs:element>
+				<xs:element ref="DishonoredReturnTraceNumber">
+				</xs:element>
+				<xs:element ref="DishonoredReturnSettlementDate">
+				</xs:element>
+				<xs:element ref="DishonoredReturnReasonCode" dfdl:length="2">
+				</xs:element>
+				<xs:element ref="Reserved" dfdl:length="1">
+				</xs:element>
+				<xs:element ref="TraceNumber">
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>

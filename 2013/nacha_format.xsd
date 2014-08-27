@@ -15,7 +15,7 @@
     *
 	******************************************************************
 	*
-	* Version 1.0 	nacha_format.xsd
+	* Version 1.1 	nacha_format.xsd
 	*
 	* This DFDL schema is one of a set of schemas that model ACH files.
 	* It provides a set of default property values for the other schemas in the set. 
@@ -28,7 +28,7 @@
 			<!-- Default property values -->
 			<dfdl:defineFormat name="NACHAFormat">
 			  <dfdl:format initiator="" terminator="" leadingSkip="0" trailingSkip="0" separator="" 
-			    textBidi="no" floating="no" encoding="US-ASCII" byteOrder="bigEndian" occursCountKind="implicit" 
+			    textBidi="no" floating="no" encoding="{$dfdl:encoding}" byteOrder="bigEndian" occursCountKind="implicit" 
 			    alignment="1" fillByte="%SP;" alignmentUnits="bytes"
 				truncateSpecifiedLengthString="no" ignoreCase="no" representation="text"
 				textPadKind="padChar" textTrimKind="none" lengthKind="explicit"
