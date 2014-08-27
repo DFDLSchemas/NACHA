@@ -24,7 +24,9 @@ Addenda records including those for Returns, Dishonored Returns and Contested Di
 
 The NACHA 2013 schemas are in the '2013' folder.
 
-The DFDL schemas are compatible with IBM DFDL 1.0 and 1.1 releases, as shipped in IBM WebSphere Message Broker 8.0.0.3 onwards and IBM Integration Bus 9.0.0.1 onwards, respectively.
+Test data and infosets are included.
+
+The DFDL schemas are compatible with IBM DFDL 1.0 and 1.1 releases, as shipped in IBM WebSphere Message Broker 8.0.0.1 onwards and IBM Integration Bus 9.0.0.1 onwards, respectively.
 
 ----------------
 NACHA 2013 Operating Rules and Guidelines may be purchased from the NACHA website: www.nacha.org
