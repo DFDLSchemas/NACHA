@@ -12,15 +12,15 @@ A NACHA message is referred to as a file, and consists of a File Header record, 
 A batch consists of a Batch Header record, repeating entries and a Batch Control record.
 An entry consists of an Entry Detail record optionally followed by Addenda records.
 
-Entry Detail records of the following types are currently supported, along with their Addenda records:
+Entry Detail records of the following types are currently supported:
 
+    PPD
     CCD
     CTX
-    PPD
     ACK
     ATX
 
-Addenda records for Returns, Dishonored Returns and Contested Dishonoured Returns are supported.
+Addenda records including those for Returns, Dishonored Returns and Contested Dishonoured Returns are supported.
 
 The NACHA 2013 schemas are in the '2013' folder.
 
