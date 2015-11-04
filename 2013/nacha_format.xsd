@@ -15,7 +15,7 @@
     *
 	******************************************************************
 	*
-	* Version 1.1 	nacha_format.xsd
+	* Version 1.2 	nacha_format.xsd
 	*
 	* This DFDL schema is one of a set of schemas that model ACH files.
 	* It provides a set of default property values for the other schemas in the set. 
@@ -45,7 +45,7 @@
 				calendarLanguage="en-US" textStandardBase="10" textNumberRep="standard"
 				textNumberPattern="##0" textNumberJustification="right"
 				textNumberPadCharacter="0" textStandardGroupingSeparator=","
-				textStandardDecimalSeparator="." textStandardExponentCharacter="e"
+				textStandardDecimalSeparator="." textStandardExponentRep="e"
 				decimalSigned="yes" textNumberCheckPolicy="strict" textStandardInfinityRep="I"
 				textStandardNaNRep="z" textNumberRounding="pattern"
 				textStandardZeroRep="0" outputNewLine="%CR;%LF;" length="0"

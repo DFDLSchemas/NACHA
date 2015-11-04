@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite suiteName="NACHA" 
+  xmlns="http://www.ibm.com/xmlns/dfdl/testData" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
+  xmlns:tdml="http://www.ibm.com/xmlns/dfdl/testData"
+  xmlns:nacha="ach:2013" defaultRoundTrip="true"
+  xmlns:daf="urn:ogf:dfdl:2013:imp:opensource.ncsa.illinois.edu:2012:ext"
+  defaultConfig="nachaDaffodilConfig.xml">
+
+  <tdml:parserTestCase name="ccd_valid_1" root="ACHFile" 
+    model="nacha_file.xsd" description="nacha test">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ccd_valid_1_nolines.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ccd_valid_1.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="ctx_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    config="daffodil_config.xml">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ctx_valid_1_nolines.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ctx_valid_1.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    config="daffodil_config.xml">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ctx_valid_2_nolines.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ctx_valid_2.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="ppd_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    config="daffodil_config.xml">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ppd_valid_1_nolines.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ppd_valid_1.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="ppd_return" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    config="daffodil_config.xml">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ppd_return.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ppd_return.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="ppd_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    config="daffodil_config.xml">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ppd_dishonored_return.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ppd_dishonored_return.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="ppd_contested_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    config="daffodil_config.xml">
+    <tdml:document>
+      <tdml:documentPart type="file">TestData_2013/ppd_contested_dishonored_return.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">TestInfosets_2013/ppd_contested_dishonored_return.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+</testSuite>
+      
