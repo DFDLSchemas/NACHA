@@ -18,8 +18,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ctx_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test"
-    config="daffodil_config.xml">
+  <tdml:parserTestCase name="ctx_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ctx_valid_1_nolines.txt</tdml:documentPart>
     </tdml:document>
@@ -28,8 +27,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="nacha_file.xsd" description="nacha test"
-    config="daffodil_config.xml">
+  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ctx_valid_2_nolines.txt</tdml:documentPart>
     </tdml:document>
@@ -38,8 +36,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test"
-    config="daffodil_config.xml">
+  <tdml:parserTestCase name="ppd_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_valid_1_nolines.txt</tdml:documentPart>
     </tdml:document>
@@ -48,8 +45,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_return" root="ACHFile" model="nacha_file.xsd" description="nacha test"
-    config="daffodil_config.xml">
+  <tdml:parserTestCase name="ppd_return" root="ACHFile" model="nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_return.txt</tdml:documentPart>
     </tdml:document>
@@ -58,8 +54,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test"
-    config="daffodil_config.xml">
+  <tdml:parserTestCase name="ppd_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_dishonored_return.txt</tdml:documentPart>
     </tdml:document>
@@ -68,8 +63,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_contested_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test"
-    config="daffodil_config.xml">
+  <tdml:parserTestCase name="ppd_contested_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_contested_dishonored_return.txt</tdml:documentPart>
     </tdml:document>
