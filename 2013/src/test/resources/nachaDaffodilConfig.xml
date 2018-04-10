@@ -4,6 +4,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<daf:tunables>
      <daf:unqualifiedPathStepPolicy>defaultNamespace</daf:unqualifiedPathStepPolicy>
-     <daf:suppressSchemaDefinitionWarnings>multipleChoiceBranches</daf:suppressSchemaDefinitionWarnings>
+     <daf:suppressSchemaDefinitionWarnings>multipleChoiceBranches noEmptyDefault</daf:suppressSchemaDefinitionWarnings>
     </daf:tunables>
 </daf:dfdlConfig>
