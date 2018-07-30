@@ -4,12 +4,13 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
   xmlns:tdml="http://www.ibm.com/xmlns/dfdl/testData"
-  xmlns:nacha="ach:2013" defaultRoundTrip="true"
+  xmlns:nacha="ach:2013" defaultRoundTrip="twoPass"
   xmlns:daf="urn:ogf:dfdl:2013:imp:daffodil.apache.org:2018:ext"
   defaultConfig="nachaDaffodilConfig.xml">
 
   <tdml:parserTestCase name="ccd_valid_1" root="ACHFile" 
-    model="nacha_file.xsd" description="nacha test">
+    model="nacha_file.xsd" description="nacha test"
+    roundTrip="onePass">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ccd_valid_1_nolines.txt</tdml:documentPart>
     </tdml:document>
@@ -27,7 +28,8 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="nacha_file.xsd" description="nacha test">
+  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+    roundTrip="onePass">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ctx_valid_2_nolines.txt</tdml:documentPart>
     </tdml:document>
