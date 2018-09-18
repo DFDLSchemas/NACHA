@@ -17,12 +17,14 @@ includeFilter in (Compile, unmanagedResources) := "*.xsd"
 // include only the files we care about in test resources
 includeFilter in (Test, unmanagedResources) :=  "TestData_2013" || "TestInfosets_2013" || "*.xml" || "*.txt" || "*.tdml"
 
+scalaVersion := "2.11.12"
+
 testOptions in ThisBuild += Tests.Argument(TestFrameworks.JUnit, "-v")
 
 libraryDependencies in ThisBuild := Seq(
   "junit" % "junit" % "4.11" % "test",
   "com.novocode" % "junit-interface" % "0.11" % "test",
-  "org.apache.daffodil" %% "daffodil-tdml" % "2.2.0-SNAPSHOT" % "test"
+  "org.apache.daffodil" %% "daffodil-tdml" % "2.2.0" % "test"
 )
 
 retrieveManaged := true
