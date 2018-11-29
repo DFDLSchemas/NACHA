@@ -6,7 +6,8 @@
   xmlns:tdml="http://www.ibm.com/xmlns/dfdl/testData"
   xmlns:nacha="ach:2013" defaultRoundTrip="twoPass"
   xmlns:daf="urn:ogf:dfdl:2013:imp:daffodil.apache.org:2018:ext"
-  defaultConfig="nachaDaffodilConfig.xml">
+  defaultConfig="nachaDaffodilConfig.xml"
+  defaultImplementations="ibm daffodil">
 
   <tdml:parserTestCase name="ccd_valid_1" root="ACHFile" 
     model="nacha_file.xsd" description="nacha test"
