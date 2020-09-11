@@ -26,7 +26,7 @@ The NACHA 2013 schemas are in the '2013' folder.
 
 Test data and infosets are included.
 
-The DFDL schemas are compatible with IBM DFDL 1.0 and 1.1 releases, as shipped in IBM WebSphere Message Broker 8.0.0.1 onwards and IBM Integration Bus 9.0.0.1 onwards, respectively.
+The DFDL schemas are compatible with IBM DFDL 1.1 release, as shipped in IBM Integration Bus 9.0.0.1 onwards and IBM App Connect Enterprise 11.0.0.0 onwards.
 
 As of 2017-01-11, these schemas are also compatible with the Daffodil open-source DFDL implementation, and can be tested via 'sbt test' using the 'sbt' build tool. They require a snapshot build of daffodil 2.0.0 currently, but this will be updated once the official Daffodil 2.0.0 release is available. 
 
