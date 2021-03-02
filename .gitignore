@@ -1,7 +1,6 @@
-.cache
+.cache*
 bin/
 lib_managed/
 /target
 project/target/
-.cache-tests
-.cache-main
+

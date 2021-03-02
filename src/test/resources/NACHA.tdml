@@ -10,7 +10,7 @@
   defaultImplementations="ibm daffodil">
 
   <tdml:parserTestCase name="ccd_valid_1" root="ACHFile" 
-    model="nacha_file.xsd" description="nacha test"
+    model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test"
     roundTrip="onePass">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ccd_valid_1_nolines.txt</tdml:documentPart>
@@ -20,7 +20,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ctx_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test">
+  <tdml:parserTestCase name="ctx_valid_1" root="ACHFile" model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ctx_valid_1_nolines.txt</tdml:documentPart>
     </tdml:document>
@@ -29,7 +29,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="nacha_file.xsd" description="nacha test"
+  <tdml:parserTestCase name="ctx_valid_2" root="ACHFile" model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test"
     roundTrip="onePass">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ctx_valid_2_nolines.txt</tdml:documentPart>
@@ -39,7 +39,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_valid_1" root="ACHFile" model="nacha_file.xsd" description="nacha test">
+  <tdml:parserTestCase name="ppd_valid_1" root="ACHFile" model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_valid_1_nolines.txt</tdml:documentPart>
     </tdml:document>
@@ -48,7 +48,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_return" root="ACHFile" model="nacha_file.xsd" description="nacha test">
+  <tdml:parserTestCase name="ppd_return" root="ACHFile" model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_return.txt</tdml:documentPart>
     </tdml:document>
@@ -57,7 +57,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test">
+  <tdml:parserTestCase name="ppd_dishonored_return" root="ACHFile" model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_dishonored_return.txt</tdml:documentPart>
     </tdml:document>
@@ -66,7 +66,7 @@
     </tdml:infoset>
   </tdml:parserTestCase>
 
-  <tdml:parserTestCase name="ppd_contested_dishonored_return" root="ACHFile" model="nacha_file.xsd" description="nacha test">
+  <tdml:parserTestCase name="ppd_contested_dishonored_return" root="ACHFile" model="xsd/com/ibm/nacha/nacha_file.xsd" description="nacha test">
     <tdml:document>
       <tdml:documentPart type="file">TestData_2013/ppd_contested_dishonored_return.txt</tdml:documentPart>
     </tdml:document>
