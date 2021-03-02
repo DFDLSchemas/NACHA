@@ -1,6 +1,6 @@
 name := "dfdl-nacha"
  
-organization := "com.tresys"
+organization := "com.ibm"
  
 version := "0.0.2"
  
