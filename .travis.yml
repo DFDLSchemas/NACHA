@@ -1,5 +1,4 @@
 language: scala
-before_script: cd 2013
 script:
   - sbt
     test
